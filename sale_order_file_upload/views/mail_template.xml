@@ -215,7 +215,7 @@
                             <tr>
                                 <td style="padding-top:10px;">
                                     <strong>Order delivery schedule:</strong>
-                                    <p>${object.delivery_detail or 'La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.'}</p>
+                                    <!-- <p>${object.delivery_detail or 'La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.'}</p> -->
                                 </td>
                             </tr>
                             <!--  -->
