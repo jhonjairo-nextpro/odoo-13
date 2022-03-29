@@ -9,9 +9,9 @@
         <field name="body_html" type="html">
             <div style="margin:0px;padding: 0px;">
                 <div>
-                    % if object.is_quote:
+                    <!-- % if object.is_quote:
                     <img class="img-fluid o_we_custom_image o_we_selected_image" src="/web/image/4368/Confirmaci%C3%B3n%20Pedido.jpg?access_token=707c519e-6d7f-4497-b8bf-6f289d29d4a8" style="width:auto;" data-original-title="" title="" aria-describedby="tooltip299595"/>
-                    % endif
+                    % endif -->
                 </div>
                 % if object.is_quote:
                 <br/>
