@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- attachment_id field in res_users view -->
+		<record id="custom_view_order_form" model="ir.ui.view">
+			<field name="name">sale.order.form.custom</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					<button class="oe_stat_button" name="attachment_on_sale_order_upload_button" type="object" icon="fa-cloud-upload" attrs="{'invisible': [('sale_order_attachment_count', '=', 0)]}">
+						<field name="sale_order_attachment_count" widget="statinfo"/>
+					</button>
+				</div>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,196 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_order_file_upload
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-29 00:26+0000\n"
+"PO-Revision-Date: 2022-03-29 00:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "&amp;times;"
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid ""
+"<i class=\"fa fa-cloud-upload\"/>\n"
+"\t\t\t\t\tUpload an Sale order..."
+msgstr ""
+"<i class=\"fa fa-cloud-upload\"/>\n"
+"\t\t\t\t\tSubir una orden de compra..."
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid "<strong>ID de transacción de pago:</strong>"
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid "<strong>Numero de autorización de pago:</strong>"
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid "<strong>Order delivery schedule:</strong>"
+msgstr "<strong> Horario de Entrega de Pedidos:</strong>"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid "<strong>Order receipt:</strong>"
+msgstr "<strong>Recepción de Órdenes:</strong>"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid "<strong>Teléfono de contacto:</strong>"
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid "<strong>Términos y condiciones:</strong>"
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model:ir.model,name:sale_order_file_upload.model_ir_attachment
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "Attachment(s): ["
+msgstr "Adjunto(s): ["
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Cualquier reclamo puede hacerse hasta 8 días posteriores a la entrega del "
+"producto, aplica restricciones."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Cualquier reclamo puede hacerse hasta 8 días posteriores a la entrega del "
+"producto."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model:ir.model.fields,field_description:sale_order_file_upload.field_res_partner__delivery_detail
+#: model:ir.model.fields,field_description:sale_order_file_upload.field_res_users__delivery_detail
+msgid "Delivery detail"
+msgstr "Detalle de entrega"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"El tiempo de entrega para la ciudad de Guayaquil es de 24 a 48 horas "
+"hábiles, para el resto de ciudades es de 48 a 72 horas hábiles."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Estimado cliente, con el fin de gestionar oportunamente la entrega de su "
+"pedido, las ordenes deberán ser ingresadas de lunes a viernes desde las "
+"08:00 AM hasta las 16:00 PM."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida"
+" la orden de compra, entregada la hoja de aprobación de arte firmada y el "
+"pago según lo acordado."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"La fecha de entrega será acordada con Figuretti S.A. una vez emitida la "
+"orden de compra, entregada la hoja de aprobación firmada y el pago según lo "
+"acordado."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Las cantidades producidas tendrán una variación de +/- 20%, las mismas que "
+"serán despachadas y facturadas."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "Order Delivery Schedule"
+msgstr " Horario de entrega de pedidos"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "Order Receipt"
+msgstr "Recepción de órdenes"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Para dar inicio a la producción de los envases se requiere el pago del 50% "
+"de la compra total."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Para iniciar la producción se requiere de una orden de compra firmada por el"
+" cliente, con la aceptación conforme de la hoja de aprobación del arte."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model:ir.model,name:sale_order_file_upload.model_res_partner
+msgid "Res Partner"
+msgstr "Socios"
+
+#. module: sale_order_file_upload
+#: model:ir.model.fields,field_description:sale_order_file_upload.field_sale_order__sale_order_attachment_count
+msgid "Sale Order Attachments"
+msgstr "Adjuntos de orden de compra"
+
+#. module: sale_order_file_upload
+#: model:ir.model.fields,field_description:sale_order_file_upload.field_ir_attachment__sale_order_upload_id
+msgid "Sale Order Upload"
+msgstr "Subir orden de compra"
+
+#. module: sale_order_file_upload
+#: model:ir.model,name:sale_order_file_upload.model_sale_order
+msgid "Sale order"
+msgstr "Orden de compra"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.report_sale_order_file_upload
+msgid ""
+"Se procederá con el despacho una vez que se acredite el pago total de la "
+"orden."
+msgstr ""
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "Upload Sale Order Attachment"
+msgstr "Subir adjunto orden de compra"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "Upload an Sale order"
+msgstr "Subir una orden de compra"
+
+#. module: sale_order_file_upload
+#: model_terms:ir.ui.view,arch_db:sale_order_file_upload.payment_upload_attachement
+msgid "files]"
+msgstr "archivos]"

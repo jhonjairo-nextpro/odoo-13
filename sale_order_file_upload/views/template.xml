@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Upload an Attachement on Payment Page -->
+		<template id="payment_upload_attachement" inherit_id="website_sale.payment">
+			<xpath expr="//div[@id='payment_method']" position="before">
+				<div>
+					<h4 class="modal-title">Order Receipt</h4>
+				</div>
+				<p>Estimado cliente, con el fin de gestionar oportunamente la entrega de su pedido, las ordenes deberán ser ingresadas de lunes a viernes desde las 08:00 AM hasta las 16:00 PM.</p>
+				<div>
+					<h4 class="modal-title">Order Delivery Schedule</h4>
+				</div>
+				<t t-if="order.partner_id.delivery_detail">
+					<p>
+						<t t-esc="order.partner_id.delivery_detail"/>
+					</p>
+				</t>
+				<t t-else="">
+					<p>La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.</p>
+				</t>
+				<!--  -->
+				<div>
+					<h4 class="modal-title">
+						Attachment(s): [
+						<t t-esc="order.sale_order_attachment_count"/>
+						files]
+					</h4>
+				</div>
+				<a class="btn btn-primary oe_upload_attachement" title="Upload Sale Order Attachment" href="#" data-toggle="modal" data-target="#myModal">
+					<i class="fa fa-cloud-upload"></i>
+					Upload an Sale order...
+				</a>
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" style="max-width: 50%;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									<![CDATA[&times;]]>
+								</button>
+								<h4 class="modal-title">Upload an Sale order</h4>
+							</div>
+							<div class="modal-body">
+								<form action="/shop/payment/sale_order_attachment/add" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+									<div class="form-group">
+										<input name="upload" type="file" value="Choose images" accept="application/pdf"/>
+										<!-- multiple="multiple" -->
+									</div>
+									<div class="form-group">
+										<input type="submit" value="Subir" class="btn btn-primary"/>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</xpath>
+		</template>
+	</data>
+</odoo>

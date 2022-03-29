@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sale_order_file_upload" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="after">
+            <!-- otro nombre de id diferente de 'informations', ya que este ya existe y el id debe de ser único y así evitar errores futuros. -->
+            <div class="row mt32 mb32" id="extra_informations">
+                <div t-if="doc.paymentez_auth_code" class="col-auto mw-100 mb-2">
+                    <strong>Numero de autorización de pago:</strong>
+                    <p class="m-0" t-field="doc.paymentez_auth_code"/>
+                </div>
+                <div t-if="doc.paymentez_trans_code" class="col-auto mw-100 mb-2">
+                    <strong>ID de transacción de pago:</strong>
+                    <p class="m-0" t-field="doc.paymentez_trans_code"/>
+                </div>
+            </div>
+            <div class="row mt32 mb32" id="informations">
+                <div class="col-auto mw-100 mb-2">
+                    <strong>Teléfono de contacto:</strong>
+                    <p class="m-0" t-field="doc.partner_id.phone"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@name='total']/div/table/t/tr/t[1]/td[1]/span[2]" position="replace"></xpath>
+        <xpath expr="//p[@id='fiscal_position_remark']" position="before">
+            <div style="padding-left: 10px">
+                <p>
+                    <strong>Order receipt:</strong>
+                    <p>Estimado cliente, con el fin de gestionar oportunamente la entrega de su pedido, las ordenes deberán ser ingresadas de lunes a viernes desde las 08:00 AM hasta las 16:00 PM.</p>
+                </p>
+                <p>
+                    <strong>Order delivery schedule:</strong>
+                    <t t-if="doc.partner_id.delivery_detail">
+                        <p t-esc="doc.partner_id.delivery_detail"/>
+                    </t>
+                    <t t-else="">
+                        <p>La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.</p>
+                    </t>
+                </p>
+            </div>
+            <div t-if="doc.is_quote" style="padding-left: 10px">
+                <p>
+                    <strong>Términos y condiciones:</strong>
+                    <ol>
+                        <li>Para iniciar la producción se requiere de una orden de compra firmada por el cliente, con la aceptación conforme de la hoja de aprobación del arte.</li>
+                        <li>Para dar inicio a la producción de los envases se requiere el pago del 50% de la compra total.</li>
+                        <li>La fecha de entrega será acordada con Figuretti S.A. una vez emitida la orden de compra, entregada la hoja de aprobación firmada y el pago según lo acordado.</li>
+                        <li>Cualquier reclamo puede hacerse hasta 8 días posteriores a la entrega del producto.</li>
+                        <li>Las cantidades producidas tendrán una variación de +/- 20%, las mismas que serán despachadas y facturadas.</li>
+                    </ol>
+                </p>
+            </div>
+            <div t-if="not doc.is_quote" style="padding-left: 10px">
+                <p>
+                    <strong>Términos y condiciones:</strong>
+                    <ol>
+                        <li>Se procederá con el despacho una vez que se acredite el pago total de la orden.</li>
+                        <li>El tiempo de entrega para la ciudad de Guayaquil es de 24 a 48 horas hábiles, para el resto de ciudades es de 48 a 72 horas hábiles.</li>
+                        <li>Cualquier reclamo puede hacerse hasta 8 días posteriores a la entrega del producto, aplica restricciones.</li>
+                    </ol>
+                </p>
+            </div>
+        </xpath>
+    </template>
+</odoo>

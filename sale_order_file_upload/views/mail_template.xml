@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale.mail_template_sale_confirmation" model="mail.template">
+        <field name="name">Sales Order: Confirmation Email</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="subject">${object.company_id.name} ${(object.get_portal_last_transaction().state == 'pending') and 'Pending Order' or 'Order'} (Ref ${object.name or 'n/a' })</field>
+        <field name="email_from">${(object.user_id.email_formatted or user.email_formatted) | safe}</field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="body_html" type="html">
+            <div style="margin:0px;padding: 0px;">
+                <div>
+                    % if object.is_quote:
+                    <img class="img-fluid o_we_custom_image o_we_selected_image" src="/web/image/4368/Confirmaci%C3%B3n%20Pedido.jpg?access_token=707c519e-6d7f-4497-b8bf-6f289d29d4a8" style="width:auto;" data-original-title="" title="" aria-describedby="tooltip299595"/>
+                    % endif
+                </div>
+                % if object.is_quote:
+                <br/>
+                <br/>
+                <p style="padding:0px;font-size: 13px;">
+                    Hola ${object.partner_id.first_name if object.partner_id.first_name else object.partner_id.name},
+                    <br/>
+                    <br/>
+                    Hemos recibido su confirmacion de la cotizacion
+                    <strong>${object.name}</strong>
+                    <br/>
+                    <strong>Bienvenido a la familia Dreampack!</strong>
+                    <br/>
+                    <br/>
+                    Quedamos a la espera de la realizacion del anticipo del 50% para seguir con el proceso.
+                </p>
+                <p style="padding:0px;font-size: 13px;">Adjuntamos los datos Bancarios para su información</p>
+                <p style="padding:0px;">
+                    <br/>
+                </p>
+                <p style="padding:0px;">
+                    <br/>
+                </p>
+                <p style="padding:0px;">
+                    <b>
+                        <font style="font-size:14px;">BANCO PRODUBANCO</font>
+                    </b>
+                </p>
+                <p style="padding:0px;">
+                    <b>Razón Social:</b>
+                    Figuretti S.A.
+                </p>
+                <p style="padding:0px;">
+                    <b>Ruc:</b>
+                    0991440429001
+                </p>
+                <p style="padding:0px;">
+                    <b>Tipo De Cuenta:</b>
+                    Corriente
+                </p>
+                <p style="padding:0px;">
+                    <b>Nº De Cuenta:</b>
+                    02-01700954-1
+                </p>
+                <p style="padding:0px;font-size: 13px;">
+                    <br/>
+                    Gracias por su confianza.
+                    <br/>
+                    <br/>
+                </p>
+                % endif % if not object.is_quote:
+                <p style="padding:0px;font-size: 12px;">
+                    Hola,
+                    <br/>
+                    <br/>
+                    % set transaction = object.get_portal_last_transaction() Su pedido
+                    <strong>${object.name}</strong>
+                    con un importe de
+                    <strong>${format_amount(object.amount_total, object.currency_id)}</strong>
+                    % if object.state == 'sale' or (transaction and transaction.state in ('done', 'authorized')) : ha sido confirmado.
+                    <br/>
+                    ¡Gracias por su confianza! % if transaction.acquirer_id.provider == 'paymentez':
+                    <br/>
+                    <br/>
+                    <span>
+                        <strong>Numero de autorización de pago:</strong>
+                        ${object.paymentez_auth_code}
+                    </span>
+                    .
+                    <br/>
+                    <span>
+                        <strong>ID de transacción de pago:</strong>
+                        ${object.paymentez_trans_code}
+                    </span>
+                    .
+                    <br/>
+                    % endif % elif transaction and transaction.state == 'pending' : está pendiente. Se confirmará cuando recibamos el pago. % if object.reference: Su referencia de pago es
+                    <strong>${object.reference}</strong>
+                    . % endif % endif
+                    <br/>
+                    <br/>
+                </p>
+                Puede contactarnos para cualquier duda o pregunta.
+                <br/>
+                <br/>
+                <p></p>
+                % if True == True:
+                <div style="margin:0px;padding: 0px;">
+                    <table width="100%" style="color:#454748;font-size: 12px; border-collapse: collapse;">
+                        <tbody>
+                            <tr style="border-bottom:2px solid #dee2e6;">
+                                <td width="18%">
+                                    <strong>Productos</strong>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <strong>Cantidad</strong>
+                                </td>
+                                <td width="10%" align="center">
+                                    <strong>Precio</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    % for line in object.order_line: % if not line.is_delivery and line.display_type in ['line_section', 'line_note']:
+                    <table width="100%" style="color:#454748;font-size: 12px; border-collapse: collapse;">
+                        <tbody>
+                            <tr style="${loop.cycle('background-color:#f2f2f2', 'background-color: #ffffff')}">
+                                <td colspan="4">
+                                    % if line.display_type == 'line_section':
+                                    <strong>${line.name}</strong>
+                                    % elif line.display_type == 'line_note':
+                                    <i>${line.name}</i>
+                                    % endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    % elif not line.is_delivery % if object.user_id.has_group('account.group_show_line_subtotals_tax_excluded'): % endif % if object.user_id.has_group('account.group_show_line_subtotals_tax_included'): % endif
+                    <table width="100%" style="color:#454748;font-size: 12px; border-collapse: collapse;">
+                        <tbody>
+                            <tr style="${loop.cycle('background-color:#f2f2f2', 'background-color: #ffffff')}">
+                                <td style="width:150px;">
+                                    <img src="/web/image/product.product/${line.product_id.id}/image_128" style="width:64px;height: 64px; object-fit: contain;" alt="Product image"/>
+                                </td>
+                                <td align="left">${line.product_id.name}</td>
+                                <td>${line.product_uom_qty}</td>
+                                <td align="right">${format_amount(line.price_subtotal, object.currency_id)}</td>
+                                <td align="right">${format_amount(line.price_subtotal, object.currency_id)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    % endif % endfor
+                </div>
+                % if object.carrier_id:
+                <div style="margin:0px;padding: 0px;">
+                    <table width="100%" style="color:#454748;font-size: 12px; border-spacing: 0px 4px;" align="right">
+                        <tbody>
+                            <tr>
+                                <td style="width:60%"></td>
+                                <td style="width:30%;border-top: 1px solid #dee2e6;" align="right">
+                                    <strong>Envío:</strong>
+                                </td>
+                                <td style="width:10%;border-top: 1px solid #dee2e6;" align="right">${format_amount(object.amount_delivery, object.currency_id)}</td>
+                            </tr>
+                            <tr>
+                                <td style="width:60%"></td>
+                                <td style="width:30%;" align="right">
+                                    <strong>Subtotal:</strong>
+                                </td>
+                                <td style="width:10%;" align="right">${format_amount(object.amount_untaxed, object.currency_id)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                % else:
+                <div style="margin:0px;padding: 0px;">
+                    <table width="100%" style="color:#454748;font-size: 12px; border-spacing: 0px 4px;" align="right">
+                        <tbody>
+                            <tr>
+                                <td style="width:60%"></td>
+                                <td style="width:30%;border-top: 1px solid #dee2e6;" align="right">
+                                    <strong>Subtotal:</strong>
+                                </td>
+                                <td style="width:10%;border-top: 1px solid #dee2e6;" align="right">${format_amount(object.amount_untaxed, object.currency_id)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                % endif
+                <div style="margin:0px;padding: 0px;">
+                    <table width="100%" style="color:#454748;font-size: 12px; border-spacing: 0px 4px;" align="right">
+                        <tbody>
+                            <tr>
+                                <td style="width:60%"></td>
+                                <td style="width:30%;" align="right">
+                                    <strong>Impuestos:</strong>
+                                </td>
+                                <td style="width:10%;" align="right">${format_amount(object.amount_tax, object.currency_id)}</td>
+                            </tr>
+                            <tr>
+                                <td style="width:60%"></td>
+                                <td style="width:30%;border-top: 1px solid #dee2e6;" align="right">
+                                    <strong>Total:</strong>
+                                </td>
+                                <td style="width:10%;border-top: 1px solid #dee2e6;" align="right">${format_amount(object.amount_total, object.currency_id)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                % if object.partner_invoice_id:
+                <div style="margin:0px;padding: 0px;">
+                    <table width="100%" style="color:#454748;font-size: 12px;">
+                        <tbody>
+                            <tr>
+                                <td style="padding-top:10px;">
+                                    <strong>Order receipt:</strong>
+                                    <p>Estimado cliente, con el fin de gestionar oportunamente la entrega de su pedido, las ordenes deberán ser ingresadas de lunes a viernes desde las 08:00 AM hasta las 16:00 PM.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top:10px;">
+                                    <strong>Order delivery schedule:</strong>
+                                    <p>${object.delivery_detail or 'La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.'}</p>
+                                </td>
+                            </tr>
+                            <!--  -->
+                            <tr>
+                                <td style="padding-top:10px;">
+                                    <strong>Facturar a:</strong>
+                                    ${object.partner_invoice_id.street or ''} ${object.partner_invoice_id.city or ''} ${object.partner_invoice_id.state_id.name or ''} ${object.partner_invoice_id.zip or ''} ${object.partner_invoice_id.country_id.name or ''}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Método de pago:</strong>
+                                    % if transaction.payment_token_id: ${transaction.payment_token_id.name} % else: ${transaction.acquirer_id.name} % endif (${format_amount(transaction.amount, object.currency_id)})
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                % endif % if object.partner_shipping_id and not object.only_services:
+                <div style="margin:0px;padding: 0px;">
+                    <table width="100%" style="color:#454748;font-size: 12px;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <strong>Enviar a:</strong>
+                                    ${object.partner_shipping_id.street or ''} ${object.partner_shipping_id.city or ''} ${object.partner_shipping_id.state_id.name or ''} ${object.partner_shipping_id.zip or ''} ${object.partner_shipping_id.country_id.name or ''}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                % endif % endif % endif
+            </div>
+        </field>
+        <field name="report_template" ref="sale.action_report_saleorder"/>
+        <field name="report_name">${(object.name or '').replace('/','_')}</field>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field name="user_signature" eval="False"/>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>
