@@ -11,7 +11,7 @@
         'views/template.xml',
         'views/res_partner.xml',
         'views/report_sale.xml',
-        'views/mail_template.xml',
+        # 'views/mail_template.xml',
     ],
     "auto_install": False,
     "application": True,
