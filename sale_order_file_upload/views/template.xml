@@ -57,5 +57,22 @@
 				</div>
 			</xpath>
 		</template>
+		<template id="confirmation" inherit_id="website_sale.confirmation">
+			<xpath expr="//div[@id='oe_structure_website_sale_confirmation_1']" position="after">
+				<div class="text-left mt-3">
+					<strong>Order receipt:</strong>
+					<p>Estimado cliente, con el fin de gestionar oportunamente la entrega de su pedido, las ordenes deberán ser ingresadas de lunes a viernes desde las 08:00 AM hasta las 16:00 PM.</p>
+				</div>
+				<div class="text-left mt-3">
+					<strong>Order delivery schedule:</strong>
+					<t t-if="order.partner_id.delivery_detail">
+						<p t-esc="order.partner_id.delivery_detail"/>
+					</t>
+					<t t-else="">
+						<p>La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.</p>
+					</t>
+				</div>
+			</xpath>
+		</template>
 	</data>
 </odoo>

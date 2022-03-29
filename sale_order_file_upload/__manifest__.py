@@ -1,8 +1,8 @@
 {
     "name": "Subir pedidos de venta (Subir adjunto)",
-    "version": "13.0.0",
+    "version": "13.0.2",
     "category": "",
-    "depends": ['website', 'website_sale'],
+    "depends": ['website', 'website_sale', 'payment_paymentez'],
     "author": "Jhon Jairo Rojas Ortiz",
     'summary': '',
     "description": "",
