@@ -131,7 +131,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <!-- % elif not line.is_delivery % if object.user_id.has_group('account.group_show_line_subtotals_tax_excluded'): % endif % if object.user_id.has_group('account.group_show_line_subtotals_tax_included'): % endif -->
+                    % elif not line.is_delivery % if object.user_id.has_group('account.group_show_line_subtotals_tax_excluded'): % endif % if object.user_id.has_group('account.group_show_line_subtotals_tax_included'): % endif
                     <table width="100%" style="color:#454748;font-size: 12px; border-collapse: collapse;">
                         <tbody>
                             <tr style="${loop.cycle('background-color:#f2f2f2', 'background-color: #ffffff')}">
@@ -220,7 +220,7 @@
                                     <p>${object.delivery_detail or 'La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.'}</p>
                                 </td>
                             </tr>
-                            <!--  -->
+                        
                             <tr>
                                 <td style="padding-top:10px;">
                                     <strong>Facturar a:</strong>
