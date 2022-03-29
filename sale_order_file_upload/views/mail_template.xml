@@ -9,9 +9,9 @@
         <field name="body_html" type="html">
             <div style="margin:0px;padding: 0px;">
                 <div>
-                    <!-- % if object.is_quote:
+                    % if object.is_quote:
                     <img class="img-fluid o_we_custom_image o_we_selected_image" src="/web/image/4368/Confirmaci%C3%B3n%20Pedido.jpg?access_token=707c519e-6d7f-4497-b8bf-6f289d29d4a8" style="width:auto;" data-original-title="" title="" aria-describedby="tooltip299595"/>
-                    % endif -->
+                    % endif
                 </div>
                 % if object.is_quote:
                 <br/>
@@ -116,7 +116,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    % for line in object.order_line: % if not line.is_delivery and line.display_type in ['line_section', 'line_note']:
+                    % for line in object.order_line:
+                    % if not line.is_delivery and line.display_type in ['line_section', 'line_note']:
                     <table width="100%" style="color:#454748;font-size: 12px; border-collapse: collapse;">
                         <tbody>
                             <tr style="${loop.cycle('background-color:#f2f2f2', 'background-color: #ffffff')}">
@@ -130,7 +131,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    % elif not line.is_delivery % if object.user_id.has_group('account.group_show_line_subtotals_tax_excluded'): % endif % if object.user_id.has_group('account.group_show_line_subtotals_tax_included'): % endif
+                    <!-- % elif not line.is_delivery % if object.user_id.has_group('account.group_show_line_subtotals_tax_excluded'): % endif % if object.user_id.has_group('account.group_show_line_subtotals_tax_included'): % endif -->
                     <table width="100%" style="color:#454748;font-size: 12px; border-collapse: collapse;">
                         <tbody>
                             <tr style="${loop.cycle('background-color:#f2f2f2', 'background-color: #ffffff')}">
@@ -144,7 +145,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    % endif % endfor
+                    % endif
+                    % endfor
                 </div>
                 % if object.carrier_id:
                 <div style="margin:0px;padding: 0px;">
@@ -215,7 +217,7 @@
                             <tr>
                                 <td style="padding-top:10px;">
                                     <strong>Order delivery schedule:</strong>
-                                    <!-- <p>${object.delivery_detail or 'La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.'}</p> -->
+                                    <p>${object.delivery_detail or 'La fecha de entrega será acordada con Dreampack Ecuador S.A. una vez emitida la orden de compra, entregada la hoja de aprobación de arte firmada y el pago según lo acordado.'}</p>
                                 </td>
                             </tr>
                             <!--  -->
@@ -234,7 +236,8 @@
                         </tbody>
                     </table>
                 </div>
-                % endif % if object.partner_shipping_id and not object.only_services:
+                % endif
+                % if object.partner_shipping_id and not object.only_services:
                 <div style="margin:0px;padding: 0px;">
                     <table width="100%" style="color:#454748;font-size: 12px;">
                         <tbody>
@@ -248,7 +251,9 @@
                         </tbody>
                     </table>
                 </div>
-                % endif % endif % endif
+                % endif
+                % endif
+                % endif
             </div>
         </field>
         <field name="report_template" ref="sale.action_report_saleorder"/>
