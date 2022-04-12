@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="sale_order_conekta_form">
+        <field name="name">sale_order_conekta.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="after">
+                <field name="payment_tx_status" attrs="{'invisible':True}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

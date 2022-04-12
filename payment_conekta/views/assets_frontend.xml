@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_frontend" inherit_id="web.assets_frontend">
+        <xpath expr="//script" position="after">
+            <script src="/payment_conekta/static/lib/conekta.api.js" type="text/javascript"/>
+            <script src="/payment_conekta/static/lib/jquery.card.js" type="text/javascript"/>
+            <script src="/payment_conekta/static/src/js/payment_form.js" type="text/javascript"/>
+        </xpath>
+    </template>
+</odoo>

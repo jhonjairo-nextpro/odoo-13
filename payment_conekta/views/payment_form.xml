@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="conekta_s2s_form">
+        <input type="hidden" id="conekta_public_key" t-att-value="acq.conekta_public_key"/>
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        <input t-if="website_sale_order" type="hidden" name="sale_order" t-att-value="website_sale_order.id"/>
+        <input type="hidden" name="acquirer_id" t-att-value="id"/>
+        <input type="hidden" name="return_url" t-att-value="return_url" t-if="return_url"/>
+        <input type="hidden" name="data_set" data-create-route="/payment/conekta/s2s/retrieve_json_3ds" />
+        <t t-set="partner" t-value="request.env.user.partner_id" />
+        <input type="hidden" name="email" t-att-value="partner.email" />
+        <input type="hidden" name="name" t-att-value="partner.name" />
+        <input type="hidden" name="partner_id" t-att-value="partner.id"/>
+        <t t-if="on_subscription_page">
+            <input type="hidden" name="account_id" t-att-value="account.id"/>
+            <input t-if="account.is_cancel_subscription()" type="hidden" name="conekta_resume" value="1"/>
+        </t>
+        <div t-attf-class="conekta-form #{'row' if bootstrap_formatting else None}">
+            <div t-att-class="'form-group col-md-8' if bootstrap_formatting else 'form-group'">
+                <label class="control-label" for="cc_number">Card number</label>
+                <input type="tel" name="cc_number" data-conekta="card[number]" id="cc_number" class="form-control" placeholder="&#8226;&#8226;&#8226;&#8226;&#32;&#8226;&#8226;&#8226;&#8226;&#32;&#8226;&#8226;&#8226;&#8226;&#32;&#8226;&#8226;&#8226;&#8226;&#32;" data-is-required="true"/>
+                <div class="card_placeholder"></div>
+                <div class="visa"></div>
+                <input type="hidden" name="cc_brand" value=""/>
+            </div>
+            <div t-att-class="'form-group col-md-4' if bootstrap_formatting else 'form-group'">
+                <label class="control-label" for="cc_cvc">CVC</label>
+                <input type="text" name="cc_cvc" id="cc_cvc" data-conekta="card[cvc]" class="form-control" maxlength="4" placeholder="CVC" data-is-required="true"/>
+            </div>
+            <div t-att-class="'form-group col-md-7' if bootstrap_formatting else 'form-group'">
+                <label class="control-label" for="cc_holder_name">Name</label>
+                <input type="text" name="cc_holder_name" data-conekta="card[name]" id="cc_holder_name" class="form-control" data-is-required="true"/>
+            </div>
+            <div t-att-class="'form-group col-md-2' if bootstrap_formatting else 'form-group'">
+                <label class="control-label" for="cc_expires_mm">Month</label>
+                <input type="text" name="cc_expires_mm" id="cc_expiry_month" data-conekta="card[exp_month]" class="form-control" maxlength="2" placeholder="MM" data-is-required="true"/>
+            </div>
+            <div t-att-class="'form-group col-md-2' if bootstrap_formatting else 'form-group'">
+                <label class="control-label" for="cc_expires_year">Year</label>
+                <input type="text" name="cc_expires_yy" id="cc_expires_yy" data-conekta="card[exp_year]" class="form-control" maxlength="4" placeholder="YY" data-is-required="true"/>
+            </div>
+            <div class="clearfix"/>
+            <span class="card-errors text-danger text-left" />
+        </div>
+    </template>
+</odoo>
